@@ -18,11 +18,28 @@ const db = mysql.createConnection({
   database: "test",
 });
 
+//Esta línea de código permite a la aplicación Express recibir datos en formato JSON en las solicitudes entrantes, sin esta línea de código, la aplicación no sería capaz de analizar automáticamente los datos JSON entrantes.
+
+//!
+app.use(express.json());
+
 //Ruta books que hace una consulta a la base de datos
 app.get("/books", (req, res) => {
-  db.query("SELECT * FROM books", (err, data) => {
+  const q = "SELECT * FROM books";
+  db.query(q, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);
+  });
+});
+
+app.post("/books", (req, res) => {
+  const q = "INSERT INTO books (`title`,`description`,`cover`) VALUES (?)";
+
+  const values = [req.body.title, req.body.description, req.body.cover];
+
+  db.query(q, [values], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Libros creado exitosamente");
   });
 });
 
