@@ -1,6 +1,9 @@
-// Para iniciarlizar un proyecto con node js escribimos en la terminal los siguientes PaymentResponse
-// * npm init -y(y significa yes en otras palabras que aceptamos toda la configuración por defecto):instla las dependencia de package.json
-// * npm i(i significa install) express mysql nodemon : instala los modulos de express, mysql y nodemon
+// Para iniciarlizar un proyecto con node js escribimos en la terminal los siguientes
+// npm init -y (y significa yes en otras palabras que aceptamos toda la configuración por defecto):instla las dependencia de package.json
+// npm i express mysql nodemon : instala los modulos de express, mysql y nodemon
+//  Para trabajar con import se debe Agregar en el package.json el siguiente modulo : "type": "module"
+// en el package.json agregar  "start": "nodemon index.js" con el fin reiniciar automáticamente la aplicación cuando se detectan cambios en los archivos.
+//Por ultimo escribir en la terminal npm start para nodemon se ejecute automaticamente
 
 import express from "express";
 import mysql from "mysql2";
