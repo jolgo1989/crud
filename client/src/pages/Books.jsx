@@ -12,17 +12,32 @@ const Books = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const fecthAllBooks = async () => {
+    const fetchAllBooks = async () => {
       try {
         const res = await axios.get("http://localhost:3000/books");
-        console.log(res);
+        setBooks(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fecthAllBooks();
+    fetchAllBooks();
   }, []);
-  return <div>Books hola todo bien</div>;
+
+  return (
+    <div>
+      <h1>Lama Book Shop</h1>
+      <div className="books">
+        {books.map((book) => (
+          <div key={book.id} className="book">
+            <img src={book.cover} alt="" />
+            <h2>{book.title}</h2>
+            <p>{book.desc}</p>
+            <span>${book.price}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Books;
