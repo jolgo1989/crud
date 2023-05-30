@@ -7,6 +7,8 @@
 
 import express from "express";
 import mysql from "mysql2";
+import cors from "cors";
+
 const app = express();
 
 // Ruta raiz
@@ -25,6 +27,7 @@ const db = mysql.createConnection({
 
 //Si aparece un error a la hora hacer una petición como cliente es porque hace falta esta linea de codigo
 app.use(express.json());
+app.use(cors());
 
 //Ruta books que hace una consulta a la base de datos
 app.get("/books", (req, res) => {
