@@ -5,6 +5,8 @@
 // SOLUCIÖN: instalar cors(npm i cors)
 //Ir la terminal dirigirse al backend(cd backend)
 //Ir a la carpeta backend y seguir la referencia #CorsFerences
+
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -28,6 +30,7 @@ const Books = () => {
       <h1>Lama Book Shop</h1>
       <div className="books">
         {books.map((book) => (
+          //Se debe utilizar book.id porque cada elemento de la db debetener una clave primaria
           <div key={book.id} className="book">
             <img src={book.cover} alt="" />
             <h2>{book.title}</h2>
@@ -36,6 +39,9 @@ const Books = () => {
           </div>
         ))}
       </div>
+      <button>
+        <Link to="/add">Add new book</Link>
+      </button>
     </div>
   );
 };
