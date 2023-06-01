@@ -26,6 +26,7 @@ const db = mysql.createConnection({
 //Esta línea de código permite a la aplicación Express recibir datos en formato JSON en las solicitudes entrantes, sin esta línea de código, la aplicación no sería capaz de analizar automáticamente los datos JSON entrantes.
 
 //Si aparece un error a la hora hacer una petición como cliente es porque hace falta esta linea de codigo
+// #CorsFerences
 app.use(express.json());
 app.use(cors());
 

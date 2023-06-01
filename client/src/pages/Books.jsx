@@ -3,8 +3,9 @@
 
 // Cuando se aplique el Fetch va aparecer un error (observarlo en el console del navegador)
 // SOLUCIÖN: instalar cors(npm i cors)
-//Ir la terminal dirigirse al backend(cd backend)
+//Ir la terminal y dirigirse al backend(cd backend)
 //Ir a la carpeta backend y seguir la referencia #CorsFerences
+// NOTA:cors sirve para que servidor permita a nuestra aplicación utilizar nuestra backend ip
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
