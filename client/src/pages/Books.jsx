@@ -26,6 +26,17 @@ const Books = () => {
     fetchAllBooks();
   }, []);
 
+  //Función para eliminar un libro
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:3000/books/" + id);
+      //Metodo para cuando se elimine el libro, la pagina se recargue automaticamente
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <h1>Lama Book Shop</h1>
@@ -37,7 +48,9 @@ const Books = () => {
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
             <span>${book.price}</span>
-            <button className="delete">Delete</button>
+            <button className="delete" onClick={() => handleDelete(book.id)}>
+              Delete
+            </button>
             <button className="update">Update</button>
           </div>
         ))}

@@ -55,6 +55,17 @@ app.post("/books", (req, res) => {
   });
 });
 
+//Eliminar libros
+app.delete("/books/:id", (req, res) => {
+  const booksId = req.params.id;
+  const q = "DELETE FROM books WHERE id = ?";
+
+  db.query(q, [booksId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Libro eliminado exitosamente");
+  });
+});
+
 const PUERTO = 3000;
 
 app.listen(PUERTO, () => {
