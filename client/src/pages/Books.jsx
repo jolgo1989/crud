@@ -26,7 +26,7 @@ const Books = () => {
     fetchAllBooks();
   }, []);
 
-  //Función para eliminar un libro
+  //Metdodo para eliminar un libro
   const handleDelete = async (id) => {
     try {
       await axios.delete("http://localhost:3000/books/" + id);
@@ -51,7 +51,9 @@ const Books = () => {
             <button className="delete" onClick={() => handleDelete(book.id)}>
               Delete
             </button>
-            <button className="update">Update</button>
+            <button className="update">
+              <Link to={`/update/${book.id}`}>Update</Link>
+            </button>
           </div>
         ))}
       </div>

@@ -16,6 +16,7 @@ const Add = () => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  //Metodo para agregar un libro
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -55,7 +56,9 @@ const Add = () => {
         onChange={handleChange}
         name="cover"
       />
-      <button onClick={handleClick}>Add</button>
+      <button className="formButton" onClick={handleClick}>
+        Add
+      </button>
     </div>
   );
 };

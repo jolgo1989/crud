@@ -30,7 +30,7 @@ const db = mysql.createConnection({
 app.use(express.json());
 app.use(cors());
 
-//Ruta books que hace una consulta a la base de datos
+//Consultar libros
 app.get("/books", (req, res) => {
   const q = "SELECT * FROM books";
   db.query(q, (err, data) => {
@@ -39,6 +39,7 @@ app.get("/books", (req, res) => {
   });
 });
 
+//Insertar libros a la db
 app.post("/books", (req, res) => {
   const q = "INSERT INTO books (`title`,`desc`,`price`,`cover`) VALUES (?)";
 
@@ -55,7 +56,7 @@ app.post("/books", (req, res) => {
   });
 });
 
-//Eliminar libros
+//Eliminar libros db
 app.delete("/books/:id", (req, res) => {
   const booksId = req.params.id;
   const q = "DELETE FROM books WHERE id = ?";
@@ -63,6 +64,25 @@ app.delete("/books/:id", (req, res) => {
   db.query(q, [booksId], (err, data) => {
     if (err) return res.json(err);
     return res.json("Libro eliminado exitosamente");
+  });
+});
+
+//Actualizar datos de la db
+app.put("/books/:id", (req, res) => {
+  const booksId = req.params.id;
+  const q =
+    "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?,`cover`= ? WHERE id = ?";
+
+  const values = [
+    req.body.title,
+    req.body.desc,
+    req.body.price,
+    req.body.cover,
+  ];
+
+  db.query(q, [...values, booksId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Libro actualizados exitosamente");
   });
 });
 
